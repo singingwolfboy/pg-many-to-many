@@ -100,6 +100,21 @@ module.exports = function PgManyToManyRelationInflectionPlugin(builder) {
           `${leftTableTypeName}-${relationName}-many-to-many-connection`
         );
       },
+      manyToManyRelationSubqueryName(
+        leftKeyAttributes,
+        junctionLeftKeyAttributes,
+        junctionRightKeyAttributes,
+        rightKeyAttributes,
+        junctionTable,
+        rightTable,
+        junctionLeftConstraint,
+        junctionRightConstraint,
+        leftTableTypeName
+      ) {
+        return `many-to-many-subquery-by-${this._singularizedTableName(
+          junctionTable
+        )}`;
+      },
     });
   });
 };
